@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/nomalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>🐈 HODU</title>
+  </head>
+
+  <body>
+    <header class="head">
+      <h1>
+        <img src="img/logo.svg" alt="HODU">
+      </h1>
+      <nav>
+        <ul class="head-nav">
+          <li><a href="#none">Home</a></li>
+          <li><a href="#none">About</a></li>
+          <li><a href="#none">Support</a></li>
+        </ul>
+        <button type="button" class="menu-toggle"><span class="a11y-hidden">메뉴 버튼</span></button>
+        <button type="button" class="btn-primary">Download</button>
+      </nav>
+    </header>
+    <!-- 1. Cover -->
+    <section class="cover">
+      <div class="wrapper">
+        <article class="cover-content">
+          <h2>
+            Lorem Ipsum is simply<br />
+            dummy text of the printing and
+          </h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry.<br />
+            Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown
+          </p>
+          <button type="button" class="btn-primary">Download</button>
+        </article>
+      </div>
+    </section>
+    <!-- // 1. Cover -->
+
+    <!-- 2. Contents -->
+    <section class="contents">
+      <div class="wrapper">
+        <h2 class="a11y-hidden">Cats contents</h2>
+        <article class="card-row">
+          <img class="round-img" src="img/img_4.png" alt="발라당 고양이">
+          <div class="desc">
+            <h3>
+              Lorem Ipsum is simply
+              dummy text of the printing and dummy text
+            </h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </article>
+        <article class="gallery">
+          <header>
+            <h2>
+              dummy text of the printing and dummy
+            </h2>
+            <p>Lorem Ipsum is simply <span>dummy text</span> of the printing and typesetting industry.<br />
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+            </p>
+          </header>
+          <ul class="gallery-carousel">
+            <li><img class="round-img" src="img/img_1.png" alt="캣타워 고양이"></li>
+            <li><img class="round-img" src="img/img_2.png" alt="뒷모습 고양이"></li>
+            <li><img class="round-img" src="img/img_3.png" alt="아이컨택 고양이"></li>
+          </ul>
+          <div class="desc">
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br />
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+              Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+            <a href='#none' class="btn-primary">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- // 2. Contents -->
+
+
+    <!-- 3. subscribe -->
+    <section class="subscribe">
+      <h2 class="a11y-hidden">subscribe</h2>
+      <form class="subsc-form">
+        <header>
+          <h3>Subscribe to our Blog post</h3>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br />
+            Lorem Ipsum has been the industry's standard dummy text
+          </p>
+        </header>
+        <fieldset>
+          <label for="e-mail" class="a11y-hidden">이메일 입력</label>
+          <input id="e-mail" type="email" placeholder="Enter your e-mail address" required>
+          <button typ="submit" class="btn-open-modal btn-primary">Subscribe</button>
+        </fieldset>
+      </form>
+    </section>
+    <!-- // 3. subscribe -->
+
+
+    <!-- 4. modal -->
+    <dialog>
+      <article class="modal">
+        <h3>Thank You!</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+        <form method="dialog">
+          <button class="btn-primary">OK! I Love HODU</button>
+        </form>
+      </article>
+    </dialog>
+    <!-- //4. modal -->
+
+    <!-- 5. footer -->
+    <footer>
+      <a href="#none">
+        <img src="img/logo.svg" alt="HODU">
+      </a>
+      <ul class="btn-sns-list">
+        <li><a class="btn-sns" href="#none"><span class="a11y-hidden">블로그</span></a></li>
+        <li><a class="btn-sns" href="#none"><span class="a11y-hidden">인스타그램</span></a></li>
+        <li><a class="btn-sns" href="#none"><span class="a11y-hidden">유튜브</span></a></li>
+        <li><a class="btn-sns" href="#none"><span class="a11y-hidden">페이스북</span></a></li>
+      </ul>
+      <a class="top-btn" href="#"><span class="a11y-hidden">위로</span></a>
+    </footer>
+    <!-- // 5. footer -->
+
+    <script>
+      // 구독하기 모달
+      const emailForm = document.querySelector('.subsc-form');
+      const modal = document.querySelector('dialog');
+      emailForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        modal.showModal();
+      });
+
+
+      // 모바일 사이드 메뉴 토글
+      const toggleBtn = document.querySelector('.menu-toggle');
+      const topHeader = document.querySelector('.head');
+      toggleBtn.addEventListener('click', () => {
+        topHeader.classList.toggle('active')
+      });
+
+    </script>
+  </body>
+
+</html>
