@@ -1,0 +1,29 @@
+// 📌 size
+$width : min(100%, 1320px);
+$size: 10px, 20px, 30px, 40px, 50px, 60px, 70px, 80px, 90px, 100px, 110px, 120px;
+
+
+// 📌 color
+$primary : #5288D9;
+$secondary : #6882a7;
+$thirdary : #e7edf3;
+$black : black;
+$white : white;
+$gray : #767676;
+$blue : #263140;
+
+
+// 📌 font
+$family : 'Spoqa Han Sans Neo',
+'sans-serif';
+
+
+// 📌 Background
+$path : '../img/';
+
+
+// 📌 mediaQuery
+$media-pc: 1024px;
+$media-tab: 768px;
+$media-m-lg: 425px;
+$media-m-sm: 375px;

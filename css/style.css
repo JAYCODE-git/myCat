@@ -2,21 +2,24 @@
 ========================================================================== */
 * {
   font-family: "Spoqa Han Sans Neo", "sans-serif";
-  font-weight: 400;
   scroll-behavior: smooth;
 }
 
 h2 {
+  color: inherit;
   font-weight: 700;
   font-size: clamp(24px, 4vw, 48px);
 }
 
 h3 {
+  color: inherit;
   font-weight: 700;
   font-size: clamp(24px, 4vw, 36px);
 }
 
 p {
+  color: inherit;
+  font-weight: 400;
   font-size: clamp(14px, 4vw, 16px);
 }
 
@@ -34,9 +37,11 @@ ul li {
 
 a[class^=btn],
 button[class^=btn] {
+  color: inherit;
+  font-weight: 400;
+  font-size: clamp(14px, 4vw, 16px);
   background: #5288D9;
   color: white;
-  font-size: clamp(14px, 4vw, 16px);
   border: none;
   padding: clamp(10px, 2vw, 15px) clamp(24px, 2vw, 30px);
   cursor: pointer;
@@ -86,11 +91,6 @@ button[class^=btn]:hover {
   flex-direction: row;
   align-items: center;
   gap: 40px;
-  transition: all 0.2 ease-out;
-  -webkit-transition: all 0.2 ease-out;
-  -moz-transition: all 0.2 ease-out;
-  -ms-transition: all 0.2 ease-out;
-  -o-transition: all 0.2 ease-out;
 }
 .head nav li {
   margin-left: 30px;
@@ -114,12 +114,12 @@ button[class^=btn]:hover {
     flex-direction: column;
     align-items: flex-start;
     padding: 0 50px;
+    visibility: hidden;
     transform: translateX(100vw);
     -webkit-transform: translateX(100vw);
     -moz-transform: translateX(100vw);
     -ms-transform: translateX(100vw);
     -o-transform: translateX(100vw);
-    visibility: hidden;
   }
   .head nav ul {
     padding: 120px 0 0;
@@ -146,7 +146,6 @@ button[class^=btn]:hover {
     -o-transform: translateX(-100vw);
   }
 }
-
 .head.active {
   overflow: visible;
 }
@@ -174,7 +173,9 @@ button[class^=btn]:hover {
   height: clamp(790px, 20vw, 900px);
 }
 .cover p {
+  color: inherit;
   font-weight: 400;
+  font-size: clamp(14px, 4vw, 16px);
   width: min(100%, 440px);
 }
 .cover a {
@@ -352,13 +353,13 @@ button[class^=btn]:hover {
   background: #263140;
   color: white;
   padding: clamp(30px, 4vw, 50px);
+  position: relative;
+  z-index: 1;
   border-radius: 30px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
-  position: relative;
-  z-index: 1;
 }
 .subscribe .subsc-form p {
   padding: 20px 0;
@@ -371,8 +372,10 @@ button[class^=btn]:hover {
 .subscribe .subsc-form input {
   background: #fff url("../img/mail.svg") no-repeat 24px center/24px;
   width: 100%;
-  padding: 20px 0;
-  text-indent: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: clamp(50px, 4vw, 70px);
+  padding-right: clamp(20px, 10vw, 160px);
   border: none;
   border-radius: 60px;
   -webkit-border-radius: 60px;
@@ -414,7 +417,6 @@ button[class^=btn]:hover {
   }
   .subscribe .subsc-form input {
     font-size: clamp(12px, 3vw, 16px);
-    text-indent: 40px;
     background-position: 12px center;
   }
   .subscribe .subsc-form button {
@@ -442,10 +444,6 @@ dialog {
 }
 dialog .modal {
   background: url("../img/particle.png") no-repeat center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: clamp(300px, 30vw, 400px);
   text-align: center;
   aspect-ratio: 6/4;
@@ -466,6 +464,9 @@ dialog .modal h3::before {
   width: 60px;
   height: 60px;
 }
+dialog .modal p {
+  padding: 20px;
+}
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.7);
 }
@@ -485,6 +486,7 @@ footer .top-btn {
   background: #fff url("../img/keyboard_arrow_up.svg") no-repeat center/cover;
   opacity: 0.6;
   position: fixed;
+  z-index: 10;
   right: 32px;
   bottom: 32px;
   width: 50px;
@@ -506,7 +508,7 @@ footer .btn-sns-list li {
 footer .btn-sns-list .btn-sns {
   width: 40px;
   height: 40px;
-  display: inline-block;
+  display: dlock;
   padding: 0;
 }
 footer .btn-sns-list li:nth-of-type(1) .btn-sns {

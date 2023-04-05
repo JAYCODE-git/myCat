@@ -1,158 +1,24 @@
-// size
-$width : min(100%, 1320px);
-$size: 10px, 20px, 30px, 40px, 50px, 60px, 70px, 80px, 90px, 100px, 110px, 120px;
-
-// color
-$primary : #5288D9;
-$secondary : #6882a7;
-$thirdary : #e7edf3;
-$b : black;
-$w : white;
-$g : #767676;
-$blue : #263140;
-
-
-// display
-$display: (
-  "b":block,
-  "ib":inline-block,
-  "i":inline,
-  "f":flex,
-  "g":grid
-);
-
-
-// font
-$family : 'Spoqa Han Sans Neo',
-'sans-serif';
-$font-size: (
-  "h2":clamp(24px, 4vw, 48px),
-  "h3":clamp(24px, 4vw, 36px),
-  "p":clamp(14px, 4vw, 16px),
-  "desc":14px
-);
-$font-weight: (
-  "b":700,
-  "m":400,
-);
-
-// String
-$path : '../img/';
-
-// mixin Background url
-@mixin bg($name, $color: null, $size: center, $position: cover, $repeat : no-repeat) {
-  background: $color url($path + $name)$repeat $size/$position;
-  @content;
-}
-
-
-// mixin Pseudo content
-@mixin pseudo($content: '') {
-  content: $content;
-  @content;
-}
-
-
-// mixin Margin
-@mixin m-auto($top: 0, $bottom: null) {
-  @content;
-
-  @if($top ==0) {
-    margin: 0 auto;
-  }
-
-  @else {
-    margin: $top auto $bottom;
-  }
-}
-
-// mixin Flex
-@mixin flex($align: null, $way: row) {
-  display: flex;
-  flex-direction: $way;
-  @content;
-
-  @if(#{$align}=='center') {
-    justify-content: center;
-    align-items: center;
-  }
-
-  @else if (#{$align}=='leftCenter') {
-    align-items: center;
-  }
-
-  @else if (#{$align}=='spaceCenter') {
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  @else if (#{$align}=='space') {
-    justify-content: space-between;
-  }
-}
-
-
-// mixin mediaQuery
-$media-pc: 1024px;
-$media-tab: 768px;
-$media-m-lg: 425px;
-$media-m-sm: 375px;
-
-
-@mixin media($size) {
-
-  @if $size=='m-sm' {
-    @media (max-width:$media-m-sm) {
-      @content;
-    }
-  }
-
-  @else if $size=='m-lg' {
-    @media (max-width:$media-m-lg) {
-      @content;
-    }
-  }
-
-  @else if $size=='tab' {
-    @media (max-width:$media-tab) {
-      @content;
-    }
-  }
-
-  @else if $size=='pc' {
-    @media (max-width:$media-pc) {
-      @content;
-    }
-  }
-
-  @else {
-    @media (max-width:$size) {
-      @content;
-    }
-  }
-}
+@import "variables";
+@import "mixin";
 
 /** Global & Component
 ========================================================================== */
 
 * {
   font-family: $family;
-  font-weight: map-get($font-weight , "m");
   scroll-behavior: smooth;
 }
 
 h2 {
-  font-weight: map-get($font-weight, "b");
-  font-size: map-get($font-size, "h2");
+  @include font(title)
 }
 
 h3 {
-  font-weight: map-get($font-weight, "b");
-  font-size: map-get($font-size, "h3");
+  @include font(sub-title)
 }
 
 p {
-  font-size: map-get($font-size, "p");
+  @include font(p)
 }
 
 ul {
@@ -172,17 +38,13 @@ ul {
 // a[class|="btn-"],
 a[class^='btn'],
 button[class^='btn'] {
+  @include font();
   background: $primary;
-  color: $w;
-  font-size: map-get($font-size, "p");
+  color: $white;
   border: none;
   padding: clamp(10px, 2vw, 15px) clamp(24px, 2vw, nth($size, 3));
   cursor: pointer;
-  border-radius: nth($size, 4);
-  -webkit-border-radius: nth($size, 4);
-  -moz-border-radius: nth($size, 4);
-  -ms-border-radius: nth($size, 4);
-  -o-border-radius: nth($size, 4);
+  @include v-prefix(radius, nth($size, 4));
 
   &:hover {
     box-shadow: inset 0 10px 0 0 rgba(0, 0, 0, .2)
@@ -192,11 +54,7 @@ button[class^='btn'] {
 .round-img {
   width: 100%;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
+  @include v-prefix(radius, nth($size, 3));
 }
 
 
@@ -212,20 +70,11 @@ button[class^='btn'] {
   left: 50%;
   top: 0;
   overflow: hidden;
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
+  @include v-prefix(translateX, -50%);
 
   nav {
     @include flex(leftCenter);
     gap: nth($size, 4);
-    transition: all 0.2 ease-out;
-    -webkit-transition: all 0.2 ease-out;
-    -moz-transition: all 0.2 ease-out;
-    -ms-transition: all 0.2 ease-out;
-    -o-transition: all 0.2 ease-out;
 
     li {
       margin-left: nth($size, 3);
@@ -249,17 +98,12 @@ button[class^='btn'] {
       position: absolute;
       top: 0;
       right: 0;
-      color: $w;
+      color: $white;
       flex-direction: column;
       align-items: flex-start;
       padding: 0 nth($size, 5);
-      transform: translateX(100vw);
-      -webkit-transform: translateX(100vw);
-      -moz-transform: translateX(100vw);
-      -ms-transform: translateX(100vw);
-      -o-transform: translateX(100vw);
       visibility: hidden;
-
+      @include v-prefix(translateX, 100vw);
 
       ul {
         padding: nth($size, 12) 0 0;
@@ -282,37 +126,24 @@ button[class^='btn'] {
       top: nth($size, 3);
       right: nth($size, 2);
       visibility: visible;
-      transform: translateX(-100vw);
-      -webkit-transform: translateX(-100vw);
-      -moz-transform: translateX(-100vw);
-      -ms-transform: translateX(-100vw);
-      -o-transform: translateX(-100vw);
+      @include v-prefix(translateX, -100vw)
     }
   }
-}
 
+  &.active {
+    overflow: visible;
 
-.head.active {
-  overflow: visible;
+    .menu-toggle {
+      left: nth($size, 2);
+      top: nth($size, 2);
+      @include bg('menu-close.svg');
+      @include v-prefix(translateX, 0);
+    }
 
-  .menu-toggle {
-    left: nth($size, 2);
-    top: nth($size, 2);
-    @include bg('menu-close.svg');
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
-  }
-
-  nav {
-    visibility: visible;
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
+    nav {
+      visibility: visible;
+      @include v-prefix(translateX, 0);
+    }
   }
 }
 
@@ -321,7 +152,7 @@ button[class^='btn'] {
   height: clamp(790px, 20vw, 900px);
 
   p {
-    font-weight: map-get($font-weight, "m");
+    @include font();
     width: min(100%, 440px)
   }
 
@@ -416,7 +247,7 @@ button[class^='btn'] {
     color: $primary;
 
     p {
-      color: $b;
+      color: $black;
       padding: nth($size, 4) 0 0;
     }
 
@@ -504,15 +335,11 @@ button[class^='btn'] {
     width: calc(100% - 40px);
     max-width: 1280px;
     background: $blue;
-    color: $w;
+    color: $white;
     padding: clamp(nth($size, 3), 4vw, nth($size, 5));
-    border-radius: nth($size, 3);
-    -webkit-border-radius: nth($size, 3);
-    -moz-border-radius: nth($size, 3);
-    -ms-border-radius: nth($size, 3);
-    -o-border-radius: nth($size, 3);
     position: relative;
     z-index: 1;
+    @include v-prefix(radius, nth($size, 3));
 
     p {
       padding: nth($size, 2) 0;
@@ -527,14 +354,12 @@ button[class^='btn'] {
     input {
       @include bg('mail.svg', #fff, 24px center, 24px);
       width: 100%;
-      padding: nth($size, 2) 0;
-      text-indent: nth($size, 6);
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: clamp(50px, 4vw, 70px);
+      padding-right: clamp(20px, 10vw, 160px);
       border: none;
-      border-radius: 60px;
-      -webkit-border-radius: 60px;
-      -moz-border-radius: 60px;
-      -ms-border-radius: 60px;
-      -o-border-radius: 60px;
+      @include v-prefix(radius, nth($size, 6));
 
       &:focus {
         outline: none;
@@ -545,12 +370,7 @@ button[class^='btn'] {
       position: absolute;
       top: 50%;
       right: 5px;
-      transform: translateY(-50%);
-      -webkit-transform: translateY(-50%);
-      -moz-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      -o-transform: translateY(-50%);
-
+      @include v-prefix(translateY, -50%);
     }
   }
 
@@ -575,18 +395,13 @@ button[class^='btn'] {
 
       input {
         font-size: clamp(12px, 3vw, 16px);
-        text-indent: nth($size, 4);
         background-position: 12px center;
       }
 
       button {
         margin: 20px 0 0;
         float: right;
-        transform: translateY(0);
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -o-transform: translateY(0);
+        @include v-prefix(translateY, 0)
       }
 
       .btn-primary {
@@ -609,7 +424,6 @@ dialog {
 
   .modal {
     @include bg('particle.png');
-    @include flex(center, column);
     width: clamp(300px, 30vw, 400px);
     text-align: center;
     aspect-ratio: 6/4;
@@ -626,16 +440,19 @@ dialog {
       @include bg('hodu.png');
       @include m-auto(0px, nth($size, 2));
       content: '';
-      display: map-get($display, "b");
+      display: block;
       width: nth($size, 6);
       height: nth($size, 6);
+    }
+
+    p {
+      padding: nth($size, 2)
     }
   }
 
   &::backdrop {
     background-color: rgba(0, 0, 0, .7)
   }
-
 }
 
 
@@ -651,16 +468,13 @@ footer {
     @include bg('keyboard_arrow_up.svg', #fff);
     opacity: 0.6;
     position: fixed;
+    z-index: 10;
     right: 32px;
     bottom: 32px;
     width: 50px;
     height: 50px;
     border: 1px solid #C4C4C4;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
+    @include v-prefix(radius, 50%);
 
     &:hover {
       opacity: 1;
@@ -676,7 +490,7 @@ footer {
     .btn-sns {
       width: nth($size, 4);
       height: nth($size, 4);
-      display: map-get($display, "ib");
+      display: dlock;
       padding: 0;
     }
   }
